@@ -28,7 +28,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       icon: "h-10 w-10",
     };
 
-    const Comp: any = asChild ? "span" : "button";
+    const Comp = asChild ? "span" : "button";
 
     return (
       <Comp
