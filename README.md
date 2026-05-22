@@ -1,7 +1,6 @@
 # OSTA Services – HVAC & Technical Services Platform
 
-![OSTA Services Preview](https://github.com/tarekshawky/Osta-booking/public/preview.jpg)
-
+![OSTA Services Preview](https://github.com/tarekshawky/Osta-booking/blob/08982e77d6e47d107dea3a991730aacfba327f40/preview.jpeg)
 A modern HVAC and technical services platform built with **Next.js**, **TailwindCSS**, and modern UI components.
 The platform allows customers to book AC services online, manage appointments, track invoices, and explore technical services through a premium dashboard experience.
 
