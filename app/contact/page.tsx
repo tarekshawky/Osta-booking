@@ -29,8 +29,8 @@ export default function ContactPage() {
       <section className="container mx-auto px-6 pb-24 grid lg:grid-cols-[1fr_1.2fr] gap-8">
         <div className="space-y-4">
           {[
-            { icon: Phone, label: "Phone", value: "+971 50 123 4567" },
-            { icon: Mail, label: "Email", value: "info@ostaservices.ae" },
+            { icon: Phone, label: "Phone", value: "+971568676036" },
+            { icon: Mail, label: "Email", value: "info@ostaservices.com" },
             {
               icon: MapPin,
               label: "Office",

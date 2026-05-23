@@ -136,7 +136,7 @@ export default function HomePage() {
                 </Link>
 
                 <a
-                  href="tel:+971501234567"
+                  href="tel:+971568676036"
                   className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-medium backdrop-blur transition hover:bg-white/20"
                 >
                   <Phone className="h-4 w-4" />
@@ -332,7 +332,7 @@ export default function HomePage() {
             </div>
 
             <a
-              href="tel:+971501234567"
+              href="tel:+971568676036"
               className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 font-medium text-white transition hover:bg-black/90"
             >
               <Phone className="h-4 w-4" />
