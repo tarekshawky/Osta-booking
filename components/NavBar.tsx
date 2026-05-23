@@ -46,8 +46,8 @@ export function NavBar() {
                 href={item.to}
                 className={`px-4 py-2 text-sm font-medium transition ${
                   isActive
-                    ? "text-black"
-                    : "text-gray-500 hover:text-black"
+                    ? "text-white"
+                    : "text-gray-500 hover:text-white"
                 }`}
               >
                 {item.label}
