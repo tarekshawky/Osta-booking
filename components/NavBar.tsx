@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Snowflake, Menu } from "lucide-react";
+import {  Menu } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/Button";
-
+import Image from "next/image";
+import logo from "@/public/osta-prime-logo.png";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
@@ -19,20 +20,11 @@ export function NavBar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-xl">
-      <div className="container mx-auto flex h-16 items-center justify-between px-6">
+      <div className="container mx-auto flex h-17 items-center justify-between px-6">
         
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg transition-transform group-hover:scale-105">
-            <Snowflake className="h-5 w-5 text-white" />
-          </div>
-
-          <div className="flex flex-col leading-none">
-            <span className="text-lg font-bold tracking-tight">OSTA</span>
-            <span className="text-[10px] font-medium tracking-[0.2em] text-gray-500">
-              SERVICES
-            </span>
-          </div>
+          <Image src={logo} alt="Osta Prime" width={150} height={150}  className="h-auto w-auto"/>
         </Link>
 
         {/* Desktop Nav */}
