@@ -21,7 +21,7 @@ export function Footer() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-xl">
-      <div className="container mx-auto flex h-18 items-center justify-between px-6">
+      <div className="container mx-auto flex items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2.5 group">
           <Image src={logo} alt="Osta Prime" width={150} height={150}  className="h-auto w-auto"/>
         </Link>
