@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Roles: "ADMIN" | "TECHNICIAN" | "CUSTOMER"
+// JobStatus: "SCHEDULED" | "ON_THE_WAY" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED"
+// InvoiceStatus: "PAID" | "PENDING" | "OVERDUE"
+// AppointmentStatus: "PENDING" | "CONFIRMED" | "COMPLETED" | "CANCELLED"
+// (SQLite does not support native enums, so these are stored as strings.)
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("TECHNICIAN")
+  phone     String?
+  title     String?
+  avatar    String?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  jobs      Job[]    @relation("TechnicianJobs")
+  expenses  Expense[]
+  customer  Customer?
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String?
+  address   String?
+  createdAt DateTime @default(now())
+
+  userId    String?  @unique
+  user      User?    @relation(fields: [userId], references: [id])
+
+  jobs         Job[]
+  invoices     Invoice[]
+  appointments Appointment[]
+}
+
+model Appointment {
+  id          String   @id @default(cuid())
+  service     String
+  status      String   @default("PENDING")
+  scheduledAt DateTime
+  address     String?
+  phone       String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id])
+}
+
+model Job {
+  id           String    @id @default(cuid())
+  jobNumber    String    @unique
+  service      String
+  status       String    @default("SCHEDULED")
+  amount       Float     @default(0)
+  scheduledAt  DateTime?
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  customerId   String?
+  customer     Customer? @relation(fields: [customerId], references: [id])
+
+  technicianId String?
+  technician   User?     @relation("TechnicianJobs", fields: [technicianId], references: [id])
+
+  invoices     Invoice[]
+}
+
+model Invoice {
+  id            String    @id @default(cuid())
+  invoiceNumber String    @unique
+  amount        Float     @default(0)
+  status        String    @default("PENDING")
+  issuedAt      DateTime  @default(now())
+  dueAt         DateTime?
+  notes         String?
+  createdAt     DateTime  @default(now())
+
+  customerId    String?
+  customer      Customer? @relation(fields: [customerId], references: [id])
+
+  jobId         String?
+  job           Job?      @relation(fields: [jobId], references: [id])
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  title       String
+  category    String   @default("General")
+  amount      Float    @default(0)
+  spentAt     DateTime @default(now())
+  notes       String?
+  createdAt   DateTime @default(now())
+
+  createdById String?
+  createdBy   User?    @relation(fields: [createdById], references: [id])
+}
